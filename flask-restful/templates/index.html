@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Test</title>
+</head>
+<body>
+<h1>Hello There</h1>
+<form action="/query" method="GET">
+    <label>This is GET</label>
+    <input type="text" id="name" name="name" placeholder="XXX">
+    <input type="text" id="lName" name="lName" placeholder="XXX">
+    <button type="submit" id="submit">Submit</button>
+</form>
+<br>
+<form action="/post" method="POST">
+    <label>This is POST</label>
+    <input type="text" id="name" name="name" placeholder="XXX">
+    <input type="text" id="lName" name="lName" placeholder="XXX">
+    <button type="submit" id="submit">Submit</button>
+</form>
+
+<a href="{{url_for('get_orders')}}"> Go to Orders</a>
+
+<form id="form_order" onsubmit="getOrders()">
+    <input type="text" id="orderid" placeholder="order id">
+    <input type="submit" value="Search">
+</form>
+
+<script type="application/javascript">
+function getOrders(){
+    var action_src = `${window.location.origin}/order/${document.getElementById("orderid").value}`;
+
+    var form_order = document.getElementById('form_order');
+    form_order.action = action_src;
+}
+</script>
+
+</body>
+</html>
